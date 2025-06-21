@@ -19,3 +19,11 @@ function addTask() {
   }
   todoInput.value = ''
 }
+
+todoList.addEventListener('click', function (e) {
+  if (e.target.tagName === 'LI') {
+    e.target.classList.add('checked')
+  } else if (e.target.tagName === 'SPAN') {
+    e.target.parentElement.remove()
+  }
+})
