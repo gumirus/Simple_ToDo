@@ -2,13 +2,44 @@ const todoInput = document.querySelector('.todo__input')
 const todoBtn = document.querySelector('.todo__btn')
 const todoList = document.querySelector('.todo__list')
 
-todoBtn.addEventListener('click', function () {
-  addTask()
-})
+// Создаем кастомный алерт
+const customAlert = document.createElement('div')
+customAlert.className = 'custom-alert'
+customAlert.innerHTML = `
+  <div class="custom-alert-content">
+    <div class="custom-alert-message"></div>
+    <button class="custom-alert-close">Хорошо</button>
+  </div>
+`
+document.body.appendChild(customAlert)
+
+// Функция для показа кастомного алерта
+function showCustomAlert(message) {
+  const alertMessage = customAlert.querySelector('.custom-alert-message')
+  alertMessage.textContent = message
+  customAlert.style.display = 'flex'
+
+  // Закрытие по клику на кнопку
+  const closeBtn = customAlert.querySelector('.custom-alert-close')
+  closeBtn.addEventListener('click', function () {
+    customAlert.style.display = 'none'
+    todoInput.focus()
+  })
+
+  // Закрытие по клику вне окна
+  customAlert.addEventListener('click', function (e) {
+    if (e.target === customAlert) {
+      customAlert.style.display = 'none'
+      todoInput.focus()
+    }
+  })
+}
+
+todoBtn.addEventListener('click', addTask)
 
 function addTask() {
-  if (todoInput.value === '') {
-    alert('Введите текст')
+  if (todoInput.value.trim() === '') {
+    showCustomAlert('Введите текст')
   } else {
     let li = document.createElement('li')
     li.innerHTML = todoInput.value
@@ -30,7 +61,6 @@ todoList.addEventListener('click', function (e) {
   } else {
     taskItem.classList.toggle('checked')
   }
-
   saveData()
 })
 
