@@ -18,12 +18,25 @@ function addTask() {
     li.appendChild(span)
   }
   todoInput.value = ''
+  saveData()
 }
 
 todoList.addEventListener('click', function (e) {
   if (e.target.tagName === 'LI') {
     e.target.classList.add('checked')
+    saveData()
   } else if (e.target.tagName === 'SPAN') {
     e.target.parentElement.remove()
+    saveData()
   }
 })
+
+function saveData() {
+  localStorage.setItem('data', todoList.innerHTML)
+}
+
+function showData() {
+  todoList.innerHTML = localStorage.getItem('data')
+}
+
+showData()
