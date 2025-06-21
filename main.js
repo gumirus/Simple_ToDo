@@ -22,13 +22,16 @@ function addTask() {
 }
 
 todoList.addEventListener('click', function (e) {
-  if (e.target.tagName === 'LI') {
-    e.target.classList.add('checked')
-    saveData()
-  } else if (e.target.tagName === 'SPAN') {
-    e.target.parentElement.remove()
-    saveData()
+  const taskItem = e.target.closest('li')
+  if (!taskItem) return
+
+  if (e.target.tagName === 'SPAN') {
+    taskItem.remove()
+  } else {
+    taskItem.classList.toggle('checked')
   }
+
+  saveData()
 })
 
 function saveData() {
