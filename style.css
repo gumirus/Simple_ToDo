@@ -155,3 +155,93 @@
 .custom-alert-close:hover {
   background-color: rgb(167, 7, 7);
 }
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+  .todo__box {
+    padding: 25px 15px 50px;
+    margin: 30px auto 15px;
+  }
+
+  .todo__title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .todo__row {
+    flex-direction: column;
+    padding-left: 0;
+    background: none;
+  }
+
+  .todo__input {
+    padding: 12px 15px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .todo__btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .todo__list li {
+    font-size: 16px;
+    padding: 10px 10px 10px 40px;
+  }
+
+  .todo__list li::before {
+    width: 18px;
+    height: 18px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .todo__list li.checked::after {
+    top: 10px;
+    left: 14px;
+    font-size: 14px;
+  }
+
+  .todo__list li span {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .custom-alert-content {
+    padding: 20px;
+  }
+
+  .custom-alert-message {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 400px) {
+  .todo__box {
+    padding: 20px 10px 40px;
+    margin: 20px 10px;
+  }
+
+  .todo__list li {
+    font-size: 15px;
+    padding: 8px 8px 8px 35px;
+  }
+
+  .todo__list li::before {
+    width: 16px;
+    height: 16px;
+    top: 9px;
+  }
+
+  .todo__list li.checked::after {
+    top: 9px;
+    left: 13px;
+  }
+}
