@@ -88,5 +88,24 @@
   position: absolute;
   top: 12px;
   left: 16px;
-  color:rgb(228, 235, 212);
+  color: rgb(228, 235, 212);
+}
+
+.todo__list li span {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: rgb(167, 7, 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.todo__list li span:hover {
+  background-color: #f1f1f1;
+  font-size: 30px;
 }
